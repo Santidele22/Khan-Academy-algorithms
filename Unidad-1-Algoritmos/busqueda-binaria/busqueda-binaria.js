@@ -49,20 +49,18 @@ const BinarySearch = (arr, firstElement, lastElement, target) => {
   let count = 0;
   while (true) {
     let half = Math.floor((min + max) / 2);
-    if (half === 0) {
+    if (min > max) {
       console.log("El elemento buscado no se encuentra dentro del array");
       break;
     }
+    // Si half es menor que el número buscado aumentamos min = half + 1 y max lo dejamos como está
+    // Si half es mayor que el número buscado restamos max = half - 1 y a min lo dejamos como está
     if (arr[half] === target) {
       console.log("Elemento " + target + " encontrado en la posición: " + half);
       break; // Agregamos break aquí para salir del bucle cuando se encuentra el elemento
-    }
-    // Si half es menor que el número buscado aumentamos min = half + 1 y max lo dejamos como está
-    if (arr[half] < target) {
+    } else if (arr[half] < target) {
       min = half + 1;
-    }
-    // Si half es mayor que el número buscado restamos max = half - 1 y a min lo dejamos como está
-    if (arr[half] > target) {
+    } else {
       max = half - 1;
     }
     count++;
